@@ -66,10 +66,6 @@ public class RPC_sample {
 						break;
 					case ' ':
 						break;
-					case '^':
-						printStream
-								.println(" ^ は使えません。数値か演算子を入力してください。利用できる演算子は + - * / です。");
-						break;
 					default:
 						printStream
 								.println("入力が不正です。数値か演算子を入力してください。利用できる演算子は + - * / です。");
