@@ -19,7 +19,6 @@ public class RPC_sample {
 
 		printStream
 				.println("逆ポーランド記法の数式を入力してください。利用できる演算子は + - * / です。\nまた、終了するときはexitと入力してください。");
-
 		while (true) {
 			String input = bufferedReader.readLine();
 			input = input.trim();
@@ -68,14 +67,15 @@ public class RPC_sample {
 						break;
 					default:
 						printStream
-								.println("入力が不正です。数値か演算子を入力してください。利用できる演算子は + - * / です。");
+								.println(array[i]
+										+ "の値が不正です。数値か演算子を入力してください。利用できる演算子は + - * / です。\nもう一度入力してください。");
 					}
 				}
 			}
 			if (tmp2 == EMPTY) {
 				printStream.println(input + " = " + tmp1);
 			} else {
-				printStream.println("入力が不正です。逆ポーランド記法で入力してください。");
+				printStream.println("逆ポーランド記法が正しくありません。\nもう一度入力してください。");
 			}
 		}
 	}
