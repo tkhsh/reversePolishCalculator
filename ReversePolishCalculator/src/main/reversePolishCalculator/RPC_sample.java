@@ -7,29 +7,39 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 
 public class RPC_sample {
-	// TODO 再利用できるようクラスに分割する。
+
 	private static final int EMPTY = -1;
 
 	public static void main(String[] args) throws IOException {
 		PrintStream printStream = System.out;
+
 		InputStream inputStream = System.in;
 		InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
 		BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-		// BufferedReaderのクラスを調べる。
 
-		while (true) {// FIXME とりあえずtrueを入れている。後で修正する。
+		printStream
+				.println("逆ポーランド記法の数式を入力してください。利用できる演算子は + - * / です。\nまた、終了するときはexitと入力してください。");
+
+		while (true) {
 			String input = bufferedReader.readLine();
 			input = input.trim();
 			char[] array = new char[input.length()];
 
+			// 終了時の判定
+			if (input.equalsIgnoreCase("exit")) {
+				printStream.println("終了します");
+				// whileループからぬける
+				break;
+			}
+
 			for (int i = 0; i < input.length(); i++) {
 				array[i] = input.charAt(i);
 			}
+
 			int tmp1 = EMPTY;
 			int tmp2 = EMPTY;
 
 			for (int i = 0; i < array.length; i++) {
-
 				String s = Character.toString(array[i]);
 
 				if (tmp1 == EMPTY && s.matches("[0-9]")) {
@@ -56,15 +66,20 @@ public class RPC_sample {
 						break;
 					case ' ':
 						break;
+					case '^':
+						printStream
+								.println(" ^ は使えません。数値か演算子を入力してください。利用できる演算子は + - * / です。");
+						break;
 					default:
-						printStream.println("エラーです。");
+						printStream
+								.println("入力が不正です。数値か演算子を入力してください。利用できる演算子は + - * / です。");
 					}
 				}
 			}
 			if (tmp2 == EMPTY) {
 				printStream.println(input + " = " + tmp1);
 			} else {
-				printStream.println("エラーです");
+				printStream.println("入力が不正です。逆ポーランド記法で入力してください。");
 			}
 		}
 	}
