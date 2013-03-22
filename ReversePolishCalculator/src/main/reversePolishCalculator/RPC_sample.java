@@ -35,8 +35,6 @@ public class RPC_sample {
 
 			convertString(input, array);
 
-			tmp1 = EMPTY;
-			tmp2 = EMPTY;
 			calculateArray(printStream, array);
 
 			if (tmp2 == EMPTY) {
@@ -48,9 +46,11 @@ public class RPC_sample {
 	}
 
 	private static void calculateArray(PrintStream printStream, char[] array) {
+		tmp1 = EMPTY;
+		tmp2 = EMPTY;
+
 		for (int i = 0; i < array.length; i++) {
 			String s = Character.toString(array[i]);
-
 			if (tmp1 == EMPTY && s.matches("[0-9]")) {
 				tmp1 = Integer.parseInt(s);
 			} else if (tmp2 == EMPTY && s.matches("[0-9]")) {
