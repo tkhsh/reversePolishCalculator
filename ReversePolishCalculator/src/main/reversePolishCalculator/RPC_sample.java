@@ -24,7 +24,7 @@ public class RPC_sample {
 		while (true) {
 			String input = bufferedReader.readLine();
 			input = input.trim();
-			char[] array = new char[input.length()];
+			char[] array = convertStringToCharArray(input);
 
 			// 終了時の判定
 			if (input.equalsIgnoreCase("exit")) {
@@ -32,8 +32,6 @@ public class RPC_sample {
 				// whileループからぬける
 				break;
 			}
-
-			convertString(input, array);
 
 			calculateArray(printStream, array);
 
@@ -46,6 +44,8 @@ public class RPC_sample {
 	}
 
 	private static void calculateArray(PrintStream printStream, char[] array) {
+		// FIXME
+		// 名前がまずい「Array」が。「逆ポーランド記法で記述された数式を計算する」という名前に。また、tmpをつかわずに計算結果を直接返すようにする。
 		tmp1 = EMPTY;
 		tmp2 = EMPTY;
 
@@ -87,9 +87,11 @@ public class RPC_sample {
 		}
 	}
 
-	private static void convertString(String input, char[] array) {
+	private static char[] convertStringToCharArray(String input) {
+		char[] array = new char[input.length()];
 		for (int i = 0; i < input.length(); i++) {
 			array[i] = input.charAt(i);
 		}
+		return array;
 	}
 }
