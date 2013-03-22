@@ -9,6 +9,8 @@ import java.io.PrintStream;
 public class RPC_sample {
 
 	private static final int EMPTY = -1;
+	private static int tmp1;
+	private static int tmp2;
 
 	public static void main(String[] args) throws IOException {
 		PrintStream printStream = System.out;
@@ -33,47 +35,51 @@ public class RPC_sample {
 
 			convertString(input, array);
 
-			int tmp1 = EMPTY;
-			int tmp2 = EMPTY;
+			tmp1 = EMPTY;
+			tmp2 = EMPTY;
+			calculateArray(printStream, array);
 
-			for (int i = 0; i < array.length; i++) {
-				String s = Character.toString(array[i]);
-
-				if (tmp1 == EMPTY && s.matches("[0-9]")) {
-					tmp1 = Integer.parseInt(s);
-				} else if (tmp2 == EMPTY && s.matches("[0-9]")) {
-					tmp2 = Integer.parseInt(s);
-				} else {// ここにif(tmp1 != EMPTY && tmp2 != EMPTY)をいれる
-					switch (array[i]) {
-					case '+':
-						tmp1 += tmp2;
-						tmp2 = EMPTY;
-						break;
-					case '-':
-						tmp1 -= tmp2;
-						tmp2 = EMPTY;
-						break;
-					case '*':
-						tmp1 *= tmp2;
-						tmp2 = EMPTY;
-						break;
-					case '/':
-						tmp1 /= tmp2;
-						tmp2 = EMPTY;
-						break;
-					case ' ':
-						break;
-					default:
-						printStream
-								.println(array[i]
-										+ "という文字が不正です。数値か演算子を入力してください。利用できる演算子は + - * / です。\nもう一度入力してください。");
-					}
-				}
-			}
 			if (tmp2 == EMPTY) {
 				printStream.println(input + " = " + tmp1);
 			} else {
 				printStream.println("逆ポーランド記法が正しくありません。\nもう一度入力してください。");
+			}
+		}
+	}
+
+	private static void calculateArray(PrintStream printStream, char[] array) {
+		for (int i = 0; i < array.length; i++) {
+			String s = Character.toString(array[i]);
+
+			if (tmp1 == EMPTY && s.matches("[0-9]")) {
+				tmp1 = Integer.parseInt(s);
+			} else if (tmp2 == EMPTY && s.matches("[0-9]")) {
+				tmp2 = Integer.parseInt(s);
+			} else {// ここにif(tmp1 != EMPTY && tmp2 != EMPTY)をいれる
+				switch (array[i]) {
+				case '+':
+					tmp1 += tmp2;
+					tmp2 = EMPTY;
+					break;
+				case '-':
+					tmp1 -= tmp2;
+					tmp2 = EMPTY;
+					break;
+				case '*':
+					tmp1 *= tmp2;
+					tmp2 = EMPTY;
+					break;
+				case '/':
+					tmp1 /= tmp2;
+					tmp2 = EMPTY;
+					break;
+				case ' ':
+					break;
+				default:
+					printStream
+							.println(array[i]
+									+ "という文字が不正です。数値か演算子を入力してください。利用できる演算子は + - * / です。\nもう一度入力してください。");
+				}
 			}
 		}
 	}
