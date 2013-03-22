@@ -33,7 +33,7 @@ public class RPC_sample {
 				break;
 			}
 
-			int answer = calculateArray(printStream, array);
+			int answer = calculateRPN(printStream, array);
 
 			if (tmp2 == EMPTY) {
 				printStream.println(input + " = " + answer);
@@ -43,7 +43,7 @@ public class RPC_sample {
 		}
 	}
 
-	private static int calculateArray(PrintStream printStream, char[] array) {
+	private static int calculateRPN(PrintStream printStream, char[] array) {
 		// FIXME
 		// 名前がまずい「Array」が。「逆ポーランド記法で記述された数式を計算する」という名前に。また、tmpをつかわずに計算結果を直接返すようにする。
 		tmp1 = EMPTY;
