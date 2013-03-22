@@ -55,7 +55,7 @@ public class RPC_sample {
 				tmp1 = Integer.parseInt(s);
 			} else if (tmp2 == EMPTY && s.matches("[0-9]")) {
 				tmp2 = Integer.parseInt(s);
-			} else {// ここにif(tmp1 != EMPTY && tmp2 != EMPTY)をいれる
+			} else if (tmp1 != EMPTY && tmp2 != EMPTY) {
 				switch (array[i]) {
 				case '+':
 					tmp1 += tmp2;
@@ -80,6 +80,9 @@ public class RPC_sample {
 							.println(array[i]
 									+ "という文字が不正です。数値か演算子を入力してください。利用できる演算子は + - * / です。\nもう一度入力してください。");
 				}
+			} else {
+				printStream
+						.println("逆ポーランド記法が正しくありません。数値か演算子を入力してください。利用できる演算子は + - * / です。\nもう一度入力してください。");
 			}
 		}
 	}
