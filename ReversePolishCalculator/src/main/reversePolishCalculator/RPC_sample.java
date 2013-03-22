@@ -33,17 +33,17 @@ public class RPC_sample {
 				break;
 			}
 
-			calculateArray(printStream, array);
+			int answer = calculateArray(printStream, array);
 
 			if (tmp2 == EMPTY) {
-				printStream.println(input + " = " + tmp1);
+				printStream.println(input + " = " + answer);
 			} else {
 				printStream.println("逆ポーランド記法が正しくありません。\nもう一度入力してください。");
 			}
 		}
 	}
 
-	private static void calculateArray(PrintStream printStream, char[] array) {
+	private static int calculateArray(PrintStream printStream, char[] array) {
 		// FIXME
 		// 名前がまずい「Array」が。「逆ポーランド記法で記述された数式を計算する」という名前に。また、tmpをつかわずに計算結果を直接返すようにする。
 		tmp1 = EMPTY;
@@ -85,6 +85,7 @@ public class RPC_sample {
 						.println("逆ポーランド記法が正しくありません。数値か演算子を入力してください。利用できる演算子は + - * / です。\nもう一度入力してください。");
 			}
 		}
+		return tmp1;
 	}
 
 	private static char[] convertStringToCharArray(String input) {
