@@ -31,9 +31,7 @@ public class RPC_sample {
 				break;
 			}
 
-			for (int i = 0; i < input.length(); i++) {
-				array[i] = input.charAt(i);
-			}
+			convertString(input, array);
 
 			int tmp1 = EMPTY;
 			int tmp2 = EMPTY;
@@ -45,7 +43,7 @@ public class RPC_sample {
 					tmp1 = Integer.parseInt(s);
 				} else if (tmp2 == EMPTY && s.matches("[0-9]")) {
 					tmp2 = Integer.parseInt(s);
-				} else {
+				} else {// ここにif(tmp1 != EMPTY && tmp2 != EMPTY)をいれる
 					switch (array[i]) {
 					case '+':
 						tmp1 += tmp2;
@@ -77,6 +75,12 @@ public class RPC_sample {
 			} else {
 				printStream.println("逆ポーランド記法が正しくありません。\nもう一度入力してください。");
 			}
+		}
+	}
+
+	private static void convertString(String input, char[] array) {
+		for (int i = 0; i < input.length(); i++) {
+			array[i] = input.charAt(i);
 		}
 	}
 }
