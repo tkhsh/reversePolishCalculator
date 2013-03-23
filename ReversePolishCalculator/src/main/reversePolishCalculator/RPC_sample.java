@@ -9,8 +9,6 @@ import java.io.PrintStream;
 public class RPC_sample {
 
 	private static final int EMPTY = -1;
-	private static int tmp1;
-	private static int tmp2;
 
 	public static void main(String[] args) throws IOException {
 		PrintStream printStream = System.out;
@@ -44,8 +42,8 @@ public class RPC_sample {
 	}
 
 	private static int calculateRPN(PrintStream printStream, char[] array) {
-		tmp1 = EMPTY;
-		tmp2 = EMPTY;
+		int tmp1 = EMPTY;
+		int tmp2 = EMPTY;
 
 		for (int i = 0; i < array.length; i++) {
 			String s = Character.toString(array[i]);
