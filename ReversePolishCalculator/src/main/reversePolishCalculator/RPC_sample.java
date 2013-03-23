@@ -44,8 +44,6 @@ public class RPC_sample {
 	}
 
 	private static int calculateRPN(PrintStream printStream, char[] array) {
-		// FIXME
-		// 名前がまずい「Array」が。「逆ポーランド記法で記述された数式を計算する」という名前に。また、tmpをつかわずに計算結果を直接返すようにする。
 		tmp1 = EMPTY;
 		tmp2 = EMPTY;
 
