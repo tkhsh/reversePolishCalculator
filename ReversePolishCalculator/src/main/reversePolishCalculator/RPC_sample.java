@@ -24,7 +24,7 @@ public class RPC_sample {
 		while (true) {
 			String input = bufferedReader.readLine();
 			input = input.trim();
-			char[] array = convertStringToCharArray(input);
+			char[] array = input.toCharArray();
 
 			// 終了時の判定
 			if (input.equalsIgnoreCase("exit")) {
@@ -84,13 +84,5 @@ public class RPC_sample {
 			}
 		}
 		return tmp1;
-	}
-
-	private static char[] convertStringToCharArray(String input) {
-		char[] array = new char[input.length()];
-		for (int i = 0; i < input.length(); i++) {
-			array[i] = input.charAt(i);
-		}
-		return array;
 	}
 }
