@@ -83,6 +83,9 @@ public class RPC_sample {
 						.println("逆ポーランド記法が正しくありません。数値か演算子を入力してください。利用できる演算子は + - * / です。\nもう一度入力してください。");
 			}
 		}
+		if (tmp2 != EMPTY) {
+			tmp1 = EMPTY;
+		}
 		return tmp1;
 	}
 }
