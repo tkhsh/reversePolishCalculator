@@ -33,11 +33,16 @@ public class RPC_sample {
 
 			int answer = calculateRPN(printStream, array);
 
-			if (answer != EMPTY) {
-				printStream.println(input + " = " + answer);
-			} else {
-				printStream.println("逆ポーランド記法が正しくありません。\nもう一度入力してください。");
-			}
+			printAnswer(printStream, input, answer);
+		}
+	}
+
+	private static void printAnswer(PrintStream printStream, String input,
+			int answer) {
+		if (answer != EMPTY) {
+			printStream.println(input + " = " + answer);
+		} else {
+			printStream.println("逆ポーランド記法が正しくありません。\nもう一度入力してください。");
 		}
 	}
 
