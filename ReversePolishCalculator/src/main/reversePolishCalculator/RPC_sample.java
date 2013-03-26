@@ -31,22 +31,22 @@ public class RPC_sample {
 				break;
 			}
 
-			int answer = calculateRPN(printStream, array);
+			String answer = calculateRPN(printStream, array);
 
 			printAnswer(printStream, input, answer);
 		}
 	}
 
 	private static void printAnswer(PrintStream printStream, String input,
-			int answer) {
-		if (answer != EMPTY) {
+			String answer) {
+		if (answer != "error") {
 			printStream.println(input + " = " + answer);
 		} else {
 			printStream.println("逆ポーランド記法が正しくありません。\nもう一度入力してください。");
 		}
 	}
 
-	private static int calculateRPN(PrintStream printStream, char[] array) {
+	private static String calculateRPN(PrintStream printStream, char[] array) {
 		int tmp1 = EMPTY;
 		int tmp2 = EMPTY;
 
@@ -86,9 +86,13 @@ public class RPC_sample {
 						.println("逆ポーランド記法が正しくありません。数値か演算子を入力してください。利用できる演算子は + - * / です。\nもう一度入力してください。");
 			}
 		}
+
+		String answer = String.valueOf(tmp1);
+
 		if (tmp2 != EMPTY) {
-			tmp1 = EMPTY;
+			answer = "error";
 		}
-		return tmp1;
+
+		return answer;
 	}
 }
