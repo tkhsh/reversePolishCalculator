@@ -92,7 +92,6 @@ public class RPC_sample {
 			result.setSuccess(false);
 			result.setErrorMessage("逆ポーランド記法が正しくありません。\nもう一度入力してください。");
 		} else {
-			result.setSuccess(true);
 			result.setValue(tmp1);
 		}
 
