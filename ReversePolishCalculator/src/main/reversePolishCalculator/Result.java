@@ -30,6 +30,7 @@ public class Result {
 	}
 
 	public Result() {
+		this.setSuccess(true);
 	}
 
 }
