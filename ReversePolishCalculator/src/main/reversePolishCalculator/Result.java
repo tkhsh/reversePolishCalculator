@@ -25,8 +25,11 @@ public class Result {
 		return isSuccess;
 	}
 
-	public Result(boolean isSuccess) {
+	public void setSuccess(boolean isSuccess) {
 		this.isSuccess = isSuccess;
+	}
+
+	public Result() {
 	}
 
 }
