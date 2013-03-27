@@ -31,14 +31,14 @@ public class RPC_sample {
 				break;
 			}
 
-			Result answer = calculateRPN(array);
+			ComputationResult answer = calculateRPN(array);
 
 			printAnswer(printStream, input, answer);
 		}
 	}
 
 	private static void printAnswer(PrintStream printStream, String input,
-			Result answer) {
+			ComputationResult answer) {
 		if (answer.isSuccess() != false) {
 			printStream.println(input + " = " + answer.getValue());
 		} else {
@@ -46,10 +46,10 @@ public class RPC_sample {
 		}
 	}
 
-	private static Result calculateRPN(char[] array) {
+	private static ComputationResult calculateRPN(char[] array) {
 		int tmp1 = EMPTY;
 		int tmp2 = EMPTY;
-		Result result = new Result();
+		ComputationResult result = new ComputationResult();
 
 		for (int i = 0; i < array.length; i++) {
 			String s = Character.toString(array[i]);

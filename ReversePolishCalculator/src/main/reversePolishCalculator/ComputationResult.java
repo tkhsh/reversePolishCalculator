@@ -1,6 +1,6 @@
 package reversePolishCalculator;
 
-public class Result {
+public class ComputationResult {
 	private int value;
 	private boolean isSuccess;
 	private String errorMessage;
@@ -29,7 +29,7 @@ public class Result {
 		this.isSuccess = isSuccess;
 	}
 
-	public Result() {
+	public ComputationResult() {
 		this.setSuccess(true);
 	}
 
