@@ -42,8 +42,7 @@ public class RPC_sample {
 		if (answer.isSuccess() != false) {
 			printStream.println(input + " = " + answer.getValue());
 		} else {
-			printStream
-					.println("逆ポーランド記法が正しくありません。数値か演算子を入力してください。利用できる演算子は + - * / です\nもう一度入力してください。");
+			printStream.println(answer.getErrorMessage());
 		}
 	}
 
