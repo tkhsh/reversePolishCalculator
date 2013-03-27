@@ -10,6 +10,7 @@ public class ComputationResult {
 	}
 
 	public void setValue(int value) {
+		this.isSuccess = true;
 		this.value = value;
 	}
 
@@ -18,6 +19,7 @@ public class ComputationResult {
 	}
 
 	public void setErrorMessage(String errorMessage) {
+		this.isSuccess = false;
 		this.errorMessage = errorMessage;
 	}
 
@@ -25,12 +27,8 @@ public class ComputationResult {
 		return isSuccess;
 	}
 
-	public void setSuccess(boolean isSuccess) {
-		this.isSuccess = isSuccess;
-	}
-
 	public ComputationResult() {
-		this.setSuccess(true);
+		this.isSuccess = true;
 	}
 
 }
