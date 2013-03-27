@@ -42,7 +42,8 @@ public class RPC_sample {
 		if (answer != "error") {
 			printStream.println(input + " = " + answer);
 		} else {
-			printStream.println("逆ポーランド記法が正しくありません。\nもう一度入力してください。");
+			printStream
+					.println("逆ポーランド記法が正しくありません。数値か演算子を入力してください。利用できる演算子は + - * / です\nもう一度入力してください。");
 		}
 	}
 
@@ -79,11 +80,13 @@ public class RPC_sample {
 				}
 			}
 		}
+
 		String answer = String.valueOf(tmp1);
 
 		if (tmp2 != EMPTY) {
 			answer = "error";
 		}
+
 		return answer;
 	}
 }
