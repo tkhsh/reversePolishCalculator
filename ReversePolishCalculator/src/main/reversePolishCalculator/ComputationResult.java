@@ -9,7 +9,7 @@ public class ComputationResult {
 		return value;
 	}
 
-	public void setValue(int value) {
+	public void setSuccessResult(int value) {
 		this.isSuccess = true;
 		this.value = value;
 	}
@@ -18,7 +18,7 @@ public class ComputationResult {
 		return errorMessage;
 	}
 
-	public void setErrorMessage(String errorMessage) {
+	public void setFailResult(String errorMessage) {
 		this.isSuccess = false;
 		this.errorMessage = errorMessage;
 	}
