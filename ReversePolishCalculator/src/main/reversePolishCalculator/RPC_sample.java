@@ -64,9 +64,8 @@ public class RPC_sample {
 						stack.remove(stack.size() - 1);
 						stack.set(stack.size() - 1, tmpAnswer);
 					} else {
-						ComputationResult result = new ComputationResult(
+						return new ComputationResult(
 								"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
-						return result;
 					}
 					break;
 				case '-':
@@ -76,9 +75,8 @@ public class RPC_sample {
 						stack.remove(stack.size() - 1);
 						stack.set(stack.size() - 1, tmpAnswer);
 					} else {
-						ComputationResult result = new ComputationResult(
+						return new ComputationResult(
 								"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
-						return result;
 					}
 					break;
 				case '*':
@@ -88,9 +86,8 @@ public class RPC_sample {
 						stack.remove(stack.size() - 1);
 						stack.set(stack.size() - 1, tmpAnswer);
 					} else {
-						ComputationResult result = new ComputationResult(
+						return new ComputationResult(
 								"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
-						return result;
 					}
 					break;
 				case '/':
@@ -100,29 +97,25 @@ public class RPC_sample {
 						stack.remove(stack.size() - 1);
 						stack.set(stack.size() - 1, tmpAnswer);
 					} else {
-						ComputationResult result = new ComputationResult(
+						return new ComputationResult(
 								"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
-						return result;
 					}
 					break;
 				case ' ':
 					break;
 				default:
-					ComputationResult result = new ComputationResult(
+					return new ComputationResult(
 							array[i]
 									+ "という文字が不正です。数値か演算子を入力してください。利用できる演算子は + - * / です\nもう一度入力してください。");
-					return result;
 				}
 			}
 		}
 
 		if (stack.size() != 1) {
-			ComputationResult result = new ComputationResult(
-					"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
-			return result;
+
+			return new ComputationResult("逆ポーランド記法が正しくありません。\nもう一度入力してください。");
 		} else {
-			ComputationResult result = new ComputationResult(stack.get(0));
-			return result;
+			return new ComputationResult(stack.get(0));
 		}
 	}
 }
