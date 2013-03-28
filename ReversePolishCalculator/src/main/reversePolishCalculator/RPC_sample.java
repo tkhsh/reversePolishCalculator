@@ -9,8 +9,6 @@ import java.util.ArrayList;
 
 public class RPC_sample {
 
-	private static final int EMPTY = -1;
-
 	public static void main(String[] args) throws IOException {
 		PrintStream printStream = System.out;
 
