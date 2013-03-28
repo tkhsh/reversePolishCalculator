@@ -46,15 +46,13 @@ public class RPC_sample {
 	}
 
 	private static ComputationResult calculateRPN(char[] array) {
-		int tmp;
 		int tmpAnswer;
 		ArrayList<Integer> stack = new ArrayList<Integer>();
 
 		for (int i = 0; i < array.length; i++) {
 			String s = Character.toString(array[i]);
 			if (s.matches("[0-9]")) {
-				tmp = Integer.parseInt(s);
-				stack.add(tmp);
+				stack.add(Integer.parseInt(s));
 			} else {
 				switch (array[i]) {
 				case '+':
