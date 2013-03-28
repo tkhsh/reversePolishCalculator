@@ -49,7 +49,6 @@ public class RPC_sample {
 	private static ComputationResult calculateRPN(char[] array) {
 		int tmp1 = EMPTY;
 		int tmp2 = EMPTY;
-		ComputationResult result = new ComputationResult();
 
 		for (int i = 0; i < array.length; i++) {
 			String s = Character.toString(array[i]);
@@ -78,20 +77,25 @@ public class RPC_sample {
 				case ' ':
 					break;
 				default:
-					result.setFailureResult(array[i]
-							+ "という文字が不正です。数値か演算子を入力してください。利用できる演算子は + - * / です\nもう一度入力してください。");
+					ComputationResult result = new ComputationResult(
+							array[i]
+									+ "という文字が不正です。数値か演算子を入力してください。利用できる演算子は + - * / です\nもう一度入力してください。");
+					return result;
 				}
 			} else {
-				result.setFailureResult("逆ポーランド記法が正しくありません。\nもう一度入力してください。");
+				ComputationResult result = new ComputationResult(
+						"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
+				return result;
 			}
 		}
 
-		if (tmp2 != EMPTY && result.isSuccess() != false) {
-			result.setFailureResult("逆ポーランド記法が正しくありません。\nもう一度入力してください。");
+		if (tmp2 != EMPTY) {
+			ComputationResult result = new ComputationResult(
+					"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
+			return result;
 		} else {
-			result.setSuccessResult(tmp1);
+			ComputationResult result = new ComputationResult(tmp1);
+			return result;
 		}
-
-		return result;
 	}
 }
