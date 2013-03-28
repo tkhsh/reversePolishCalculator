@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.util.ArrayList;
 
 public class RPC_sample {
 
@@ -47,32 +48,64 @@ public class RPC_sample {
 	}
 
 	private static ComputationResult calculateRPN(char[] array) {
-		int tmp1 = EMPTY;
-		int tmp2 = EMPTY;
+		int tmp;
+		int tmpAnswer;
+		ArrayList<Integer> stack = new ArrayList<Integer>();
 
 		for (int i = 0; i < array.length; i++) {
 			String s = Character.toString(array[i]);
-			if (tmp1 == EMPTY && s.matches("[0-9]")) {
-				tmp1 = Integer.parseInt(s);
-			} else if (tmp2 == EMPTY && s.matches("[0-9]")) {
-				tmp2 = Integer.parseInt(s);
-			} else if (tmp1 != EMPTY && tmp2 != EMPTY) {
+			if (s.matches("[0-9]")) {
+				tmp = Integer.parseInt(s);
+				stack.add(tmp);
+			} else {
 				switch (array[i]) {
 				case '+':
-					tmp1 += tmp2;
-					tmp2 = EMPTY;
+					if (stack.size() >= 2) {
+						tmpAnswer = stack.get(stack.size() - 2)
+								+ stack.get(stack.size() - 1);
+						stack.remove(stack.size() - 1);
+						stack.set(stack.size() - 1, tmpAnswer);
+					} else {
+						ComputationResult result = new ComputationResult(
+								"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
+						return result;
+					}
 					break;
 				case '-':
-					tmp1 -= tmp2;
-					tmp2 = EMPTY;
+					if (stack.size() >= 2) {
+						tmpAnswer = stack.get(stack.size() - 2)
+								- stack.get(stack.size() - 1);
+						stack.remove(stack.size() - 1);
+						stack.set(stack.size() - 1, tmpAnswer);
+					} else {
+						ComputationResult result = new ComputationResult(
+								"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
+						return result;
+					}
 					break;
 				case '*':
-					tmp1 *= tmp2;
-					tmp2 = EMPTY;
+					if (stack.size() >= 2) {
+						tmpAnswer = stack.get(stack.size() - 2)
+								* stack.get(stack.size() - 1);
+						stack.remove(stack.size() - 1);
+						stack.set(stack.size() - 1, tmpAnswer);
+					} else {
+						ComputationResult result = new ComputationResult(
+								"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
+						return result;
+					}
 					break;
 				case '/':
-					tmp1 /= tmp2;
-					tmp2 = EMPTY;
+					if (stack.size() >= 2) {
+						tmpAnswer = stack.get(stack.size() - 2)
+								/ stack.get(stack.size() - 1);
+						stack.remove(stack.size() - 1);
+						stack.set(stack.size() - 1, tmpAnswer);
+					} else {
+						ComputationResult result = new ComputationResult(
+								"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
+						return result;
+					}
 					break;
 				case ' ':
 					break;
@@ -82,19 +115,15 @@ public class RPC_sample {
 									+ "という文字が不正です。数値か演算子を入力してください。利用できる演算子は + - * / です\nもう一度入力してください。");
 					return result;
 				}
-			} else {
-				ComputationResult result = new ComputationResult(
-						"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
-				return result;
 			}
 		}
 
-		if (tmp2 != EMPTY) {
+		if (stack.size() != 1) {
 			ComputationResult result = new ComputationResult(
 					"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
 			return result;
 		} else {
-			ComputationResult result = new ComputationResult(tmp1);
+			ComputationResult result = new ComputationResult(stack.get(0));
 			return result;
 		}
 	}
