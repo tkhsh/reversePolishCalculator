@@ -78,16 +78,16 @@ public class RPC_sample {
 				case ' ':
 					break;
 				default:
-					result.setFailResult(array[i]
+					result.setFailureResult(array[i]
 							+ "という文字が不正です。数値か演算子を入力してください。利用できる演算子は + - * / です\nもう一度入力してください。");
 				}
 			} else {
-				result.setFailResult("逆ポーランド記法が正しくありません。\nもう一度入力してください。");
+				result.setFailureResult("逆ポーランド記法が正しくありません。\nもう一度入力してください。");
 			}
 		}
 
 		if (tmp2 != EMPTY && result.isSuccess() != false) {
-			result.setFailResult("逆ポーランド記法が正しくありません。\nもう一度入力してください。");
+			result.setFailureResult("逆ポーランド記法が正しくありません。\nもう一度入力してください。");
 		} else {
 			result.setSuccessResult(tmp1);
 		}

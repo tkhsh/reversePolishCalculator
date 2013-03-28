@@ -18,7 +18,7 @@ public class ComputationResult {
 		return errorMessage;
 	}
 
-	public void setFailResult(String errorMessage) {
+	public void setFailureResult(String errorMessage) {
 		this.isSuccess = false;
 		this.errorMessage = errorMessage;
 	}
