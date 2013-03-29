@@ -107,7 +107,7 @@ public class RPC_sample {
 		if (stack.size() != 1) {
 			return new ComputationResult("逆ポーランド記法が正しくありません。\nもう一度入力してください。");
 		} else {
-			return new ComputationResult(stack.pop());
+			return new ComputationResult(stack.peek());
 		}
 	}
 }
