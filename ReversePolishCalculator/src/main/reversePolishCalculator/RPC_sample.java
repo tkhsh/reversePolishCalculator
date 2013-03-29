@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class RPC_sample {
 
@@ -46,7 +46,7 @@ public class RPC_sample {
 	}
 
 	private static ComputationResult calculateRPN(char[] array) {
-		ArrayList<Integer> stack = new ArrayList<Integer>();
+		LinkedList<Integer> stack = new LinkedList<Integer>();
 
 		for (int i = 0; i < array.length; i++) {
 			String s = Character.toString(array[i]);
