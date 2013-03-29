@@ -51,15 +51,14 @@ public class RPC_sample {
 		for (int i = 0; i < array.length; i++) {
 			String s = Character.toString(array[i]);
 			if (s.matches("[0-9]")) {
-				stack.add(Integer.parseInt(s));
+				stack.push(Integer.parseInt(s));
 			} else {
 				switch (array[i]) {
 				case '+':
 					if (stack.size() >= 2) {
-						int summation = stack.get(stack.size() - 2)
-								+ stack.get(stack.size() - 1);
-						stack.remove(stack.size() - 1);
-						stack.set(stack.size() - 1, summation);
+						int tmp = stack.pop();
+						tmp += stack.pop();
+						stack.push(tmp);
 					} else {
 						return new ComputationResult(
 								"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
@@ -67,10 +66,9 @@ public class RPC_sample {
 					break;
 				case '-':
 					if (stack.size() >= 2) {
-						int difference = stack.get(stack.size() - 2)
-								- stack.get(stack.size() - 1);
-						stack.remove(stack.size() - 1);
-						stack.set(stack.size() - 1, difference);
+						int tmp = stack.pop();
+						tmp -= stack.pop();
+						stack.push(tmp);
 					} else {
 						return new ComputationResult(
 								"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
@@ -78,10 +76,9 @@ public class RPC_sample {
 					break;
 				case '*':
 					if (stack.size() >= 2) {
-						int product = stack.get(stack.size() - 2)
-								* stack.get(stack.size() - 1);
-						stack.remove(stack.size() - 1);
-						stack.set(stack.size() - 1, product);
+						int tmp = stack.pop();
+						tmp *= stack.pop();
+						stack.push(tmp);
 					} else {
 						return new ComputationResult(
 								"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
@@ -89,10 +86,9 @@ public class RPC_sample {
 					break;
 				case '/':
 					if (stack.size() >= 2) {
-						int quotient = stack.get(stack.size() - 2)
-								/ stack.get(stack.size() - 1);
-						stack.remove(stack.size() - 1);
-						stack.set(stack.size() - 1, quotient);
+						int tmp = stack.pop();
+						tmp /= stack.pop();
+						stack.push(tmp);
 					} else {
 						return new ComputationResult(
 								"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
@@ -109,10 +105,9 @@ public class RPC_sample {
 		}
 
 		if (stack.size() != 1) {
-
 			return new ComputationResult("逆ポーランド記法が正しくありません。\nもう一度入力してください。");
 		} else {
-			return new ComputationResult(stack.get(0));
+			return new ComputationResult(stack.pop());
 		}
 	}
 }
