@@ -57,7 +57,7 @@ public class RPC_sample {
 				case '+':
 					if (stack.size() >= 2) {
 						int tmp = stack.pop();
-						tmp += stack.pop();
+						tmp = stack.pop() + tmp;
 						stack.push(tmp);
 					} else {
 						return new ComputationResult(
@@ -67,7 +67,7 @@ public class RPC_sample {
 				case '-':
 					if (stack.size() >= 2) {
 						int tmp = stack.pop();
-						tmp -= stack.pop();
+						tmp = stack.pop() - tmp;
 						stack.push(tmp);
 					} else {
 						return new ComputationResult(
@@ -77,7 +77,7 @@ public class RPC_sample {
 				case '*':
 					if (stack.size() >= 2) {
 						int tmp = stack.pop();
-						tmp *= stack.pop();
+						tmp = stack.pop() * tmp;
 						stack.push(tmp);
 					} else {
 						return new ComputationResult(
@@ -87,7 +87,7 @@ public class RPC_sample {
 				case '/':
 					if (stack.size() >= 2) {
 						int tmp = stack.pop();
-						tmp /= stack.pop();
+						tmp = stack.pop() / tmp;
 						stack.push(tmp);
 					} else {
 						return new ComputationResult(
