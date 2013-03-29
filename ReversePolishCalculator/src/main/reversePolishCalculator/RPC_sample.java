@@ -56,9 +56,9 @@ public class RPC_sample {
 				switch (array[i]) {
 				case '+':
 					if (stack.size() >= 2) {
-						int tmp = stack.pop();
-						tmp = stack.pop() + tmp;
-						stack.push(tmp);
+						int right = stack.pop();
+						int left = stack.pop();
+						stack.push(left + right);
 					} else {
 						return new ComputationResult(
 								"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
@@ -66,9 +66,9 @@ public class RPC_sample {
 					break;
 				case '-':
 					if (stack.size() >= 2) {
-						int tmp = stack.pop();
-						tmp = stack.pop() - tmp;
-						stack.push(tmp);
+						int right = stack.pop();
+						int left = stack.pop();
+						stack.push(left - right);
 					} else {
 						return new ComputationResult(
 								"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
@@ -76,9 +76,9 @@ public class RPC_sample {
 					break;
 				case '*':
 					if (stack.size() >= 2) {
-						int tmp = stack.pop();
-						tmp = stack.pop() * tmp;
-						stack.push(tmp);
+						int right = stack.pop();
+						int left = stack.pop();
+						stack.push(left * right);
 					} else {
 						return new ComputationResult(
 								"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
@@ -86,9 +86,9 @@ public class RPC_sample {
 					break;
 				case '/':
 					if (stack.size() >= 2) {
-						int tmp = stack.pop();
-						tmp = stack.pop() / tmp;
-						stack.push(tmp);
+						int right = stack.pop();
+						int left = stack.pop();
+						stack.push(left / right);
 					} else {
 						return new ComputationResult(
 								"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
