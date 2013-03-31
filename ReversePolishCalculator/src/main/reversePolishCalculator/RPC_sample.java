@@ -21,7 +21,7 @@ public class RPC_sample {
 		while (true) {
 			String input = bufferedReader.readLine();
 			input = input.trim();
-			char[] array = input.toCharArray();
+			String[] array = input.split(" ");
 
 			// 終了時の判定
 			if (input.equalsIgnoreCase("exit")) {
@@ -45,15 +45,19 @@ public class RPC_sample {
 		}
 	}
 
-	private static ComputationResult calculateRPN(char[] array) {
+	private static ComputationResult calculateRPN(String[] array) {
 		LinkedList<Integer> stack = new LinkedList<Integer>();
 
 		for (int i = 0; i < array.length; i++) {
-			String s = Character.toString(array[i]);
-			if (s.matches("[0-9]")) {
-				stack.push(Integer.parseInt(s));
+			if (array[i].matches("[0-9]*")) {
+				stack.push(Integer.parseInt(array[i]));
 			} else {
-				switch (array[i]) {
+				char[] c = array[i].toCharArray();
+				if (c.length > 1) {
+					return new ComputationResult(
+							"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
+				}
+				switch (c[0]) {
 				case '+':
 					if (stack.size() >= 2) {
 						int right = stack.pop();
