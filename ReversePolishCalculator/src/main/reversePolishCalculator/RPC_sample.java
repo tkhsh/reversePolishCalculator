@@ -49,14 +49,14 @@ public class RPC_sample {
 		}
 	}
 
-	private static ComputationResult calculateRPN(String[] array) {
+	private static ComputationResult calculateRPN(String[] symbols) {
 		LinkedList<Integer> stack = new LinkedList<Integer>();
 
-		for (int i = 0; i < array.length; i++) {
-			if (array[i].matches("[0-9]*")) {
-				stack.push(Integer.parseInt(array[i]));
+		for (int i = 0; i < symbols.length; i++) {
+			if (symbols[i].matches("[0-9]*")) {
+				stack.push(Integer.parseInt(symbols[i]));
 			} else {
-				char[] c = array[i].toCharArray();
+				char[] c = symbols[i].toCharArray();
 				if (c.length > 1) {
 					return new ComputationResult(
 							"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
@@ -106,7 +106,7 @@ public class RPC_sample {
 					break;
 				default:
 					return new ComputationResult(
-							array[i]
+							symbols[i]
 									+ "という文字が不正です。数値か演算子を入力してください。利用できる演算子は + - * / です\nもう一度入力してください。");
 				}
 			}
