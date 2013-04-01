@@ -61,7 +61,7 @@ public class RPC_sample {
 					return new ComputationResult(
 							"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
 				}
-				switch (c[0]) {
+				switch (symbols[i].charAt(0)) {
 				case '+':
 					if (stack.size() >= 2) {
 						int right = stack.pop();
