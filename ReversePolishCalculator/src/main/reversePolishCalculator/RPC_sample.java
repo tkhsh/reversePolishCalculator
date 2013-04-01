@@ -58,7 +58,8 @@ public class RPC_sample {
 			} else {
 				if (symbols[i].length() > 1) {
 					return new ComputationResult(
-							"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
+							symbols[i]
+									+ "という文字が不正です。数値か演算子を入力してください。利用できる演算子は + - * / です\nもう一度入力してください。");
 				}
 				switch (symbols[i].charAt(0)) {
 				case '+':
