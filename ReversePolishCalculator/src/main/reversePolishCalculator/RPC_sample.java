@@ -21,7 +21,7 @@ public class RPC_sample {
 		while (true) {
 			String input = bufferedReader.readLine();
 			input = input.trim();
-			String[] array = input.split(" ");
+			String[] notations = input.split(" ");
 
 			// 終了時の判定
 			if (input.equalsIgnoreCase("exit")) {
@@ -30,7 +30,7 @@ public class RPC_sample {
 				break;
 			}
 
-			ComputationResult answer = calculateRPN(array);
+			ComputationResult answer = calculateRPN(notations);
 
 			printAnswer(printStream, input, answer);
 		}
