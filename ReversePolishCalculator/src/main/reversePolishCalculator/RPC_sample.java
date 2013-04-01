@@ -20,7 +20,7 @@ public class RPC_sample {
 				.println("逆ポーランド記法の数式を入力してください。利用できる演算子は + - * / です。\nまた、終了するときはexitと入力してください。");
 		while (true) {
 			String input = bufferedReader.readLine();
-			String[] notations = analyzeInput(input);
+			String[] symbols = analyzeInput(input);
 
 			// 終了時の判定
 			if (input.equalsIgnoreCase("exit")) {
@@ -29,7 +29,7 @@ public class RPC_sample {
 				break;
 			}
 
-			ComputationResult answer = calculateRPN(notations);
+			ComputationResult answer = calculateRPN(symbols);
 
 			printAnswer(printStream, input, answer);
 		}
