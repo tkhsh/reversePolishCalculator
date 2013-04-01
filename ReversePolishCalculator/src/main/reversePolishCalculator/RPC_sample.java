@@ -56,7 +56,6 @@ public class RPC_sample {
 			if (symbols[i].matches("[0-9]*")) {
 				stack.push(Integer.parseInt(symbols[i]));
 			} else {
-				char[] c = symbols[i].toCharArray();
 				if (symbols[i].length() > 1) {
 					return new ComputationResult(
 							"逆ポーランド記法が正しくありません。\nもう一度入力してください。");
